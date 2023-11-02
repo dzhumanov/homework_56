@@ -5,10 +5,10 @@ import baconImage from '../assets/bacon.png';
 import { Ingredients } from '../types';
 
 const INGREDIENTS: Ingredients[] = [
-    {name: 'Meat', cost: 80, img: meatImage},
-    {name: 'Cheese', cost: 50, img: cheeseImage},
-    {name: 'Salad', cost: 10, img: saladImage},
-    {name: 'Bacon', cost: 60, img: baconImage},
+    {name: 'Meat', cost: 80, img: meatImage, id: 1},
+    {name: 'Cheese', cost: 50, img: cheeseImage, id: 2},
+    {name: 'Salad', cost: 10, img: saladImage, id: 3},
+    {name: 'Bacon', cost: 60, img: baconImage, id: 4},
 ];
 
 export default INGREDIENTS;
