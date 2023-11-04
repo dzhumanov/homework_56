@@ -145,3 +145,7 @@
     height: 200px;
   }
 }
+
+.ingredient img{
+  width: 100px;
+}
