@@ -6,6 +6,7 @@ const Ingredient: React.FC<IngredientProps> = ({
   name,
   cost,
   img,
+  total,
   onAdd,
   onDelete,
 }) => {
@@ -14,6 +15,7 @@ const Ingredient: React.FC<IngredientProps> = ({
       <img src={img} alt={name} />
       <h3>{name}</h3>
       <p>{cost} сом</p>
+      <p>x {total}</p>
       <button onClick={onAdd}>Добавить</button>
       <button onClick={onDelete}>Удалить</button>
     </div>

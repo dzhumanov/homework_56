@@ -3,6 +3,9 @@ import {useState} from 'react'
 import INGREDIENTS from "./Constants/Constants";
 import Ingredient from './Components/Ingredient';
 
+import BurgerContent from './Components/BurgerContent';
+import TotalPrice from './Components/TotalPrice';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
 
@@ -38,16 +41,6 @@ function App() {
     });
   };
 
-  const burgerContent = ingredients.map((ingredient) => {
-    const ingredientDivs = [];
-    for (let i = 0; i < ingredient.count; i++) {
-      ingredientDivs.push(
-        <div key={`${ingredient.name}-${i}`} className={ingredient.name}></div>
-      );
-    }
-    return ingredientDivs;
-  });
-
   const calculateTotalCost = () => {
     const totalCost = ingredients.reduce((acc, ingredient) => {
       const ingredientInfo = INGREDIENTS.find(item => item.name === ingredient.name);
@@ -71,6 +64,7 @@ function App() {
                 name={ingredient.name} 
                 cost={ingredient.cost} 
                 img={ingredient.img}
+                total={TotalPrice(ingredient.name, ingredients)}
                 onAdd={() => addIngredient(ingredient.name)}
                 onDelete={() => deleteIngredient(ingredient.name)}
               />
@@ -83,7 +77,11 @@ function App() {
               <div className="Seeds1"></div>
               <div className="Seeds2"></div>
             </div>
-            {burgerContent}
+            {ingredients.map((ingredient) => {
+              return (
+                <BurgerContent key={ingredient.name} name={ingredient.name} count={ingredient.count} />
+              )
+            })}
             <div className="BreadBottom"></div>
           </div>
           <div>Cost: {calculateTotalCost()} </div>
