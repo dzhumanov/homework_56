@@ -38,6 +38,27 @@ function App() {
     });
   };
 
+  const burgerContent = ingredients.map((ingredient) => {
+    const ingredientDivs = [];
+    for (let i = 0; i < ingredient.count; i++) {
+      ingredientDivs.push(
+        <div key={`${ingredient.name}-${i}`} className={ingredient.name}></div>
+      );
+    }
+    return ingredientDivs;
+  });
+
+  const calculateTotalCost = () => {
+    const totalCost = ingredients.reduce((acc, ingredient) => {
+      const ingredientInfo = INGREDIENTS.find(item => item.name === ingredient.name);
+      if (ingredientInfo) {
+        return acc + ingredientInfo.cost * ingredient.count;
+      } else {
+        throw new Error('Info not found!');
+      }
+    }, 30);
+    return totalCost;
+  };
 
   return(
     <div className='container'>
@@ -62,8 +83,10 @@ function App() {
               <div className="Seeds1"></div>
               <div className="Seeds2"></div>
             </div>
+            {burgerContent}
             <div className="BreadBottom"></div>
           </div>
+          <div>Cost: {calculateTotalCost()} </div>
         </div>
       </div>
     </div>
