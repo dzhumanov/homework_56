@@ -11,8 +11,8 @@ import './App.css'
 
 function App() {
   const [ingredients, setIngredients] = useState<{name: string; count: number}[]>([
-    {name: 'Meat', count: 0},
     {name: 'Cheese', count: 0},
+    {name: 'Meat', count: 0},
     {name: 'Salad', count: 0},
     {name: 'Bacon', count: 0},
   ]);
@@ -55,7 +55,7 @@ function App() {
 
   return(
     <div className='container'>
-      <div className='row'>
+      <div className='row d-flex mt-5 '>
         <div className='col'>
           <h2>Ingredients</h2>
             {INGREDIENTS.map((ingredient) => (
@@ -70,12 +70,11 @@ function App() {
               />
             ))}
         </div>
-        <div className='col'>
+        <div className='col d-flex flex-column align-items-center'>
           <h2>Burger</h2>
-          <div className="Burger">
+          <div className="Burger mt-5">
             <div className="BreadTop">
-              <div className="Seeds1"></div>
-              <div className="Seeds2"></div>
+              <div className='sesame'></div>
             </div>
             {ingredients.map((ingredient) => {
               return (
@@ -84,7 +83,7 @@ function App() {
             })}
             <div className="BreadBottom"></div>
           </div>
-          <div>Cost: {calculateTotalCost()} </div>
+          <div className='fs-3'>Cost: {calculateTotalCost()} </div>
         </div>
       </div>
     </div>
